@@ -1,0 +1,26 @@
+{
+
+	"user":{
+
+		"id":1,
+		"firstName":"Uttam ",
+		"middleName":null,
+		"lastName":"Ghorai",
+		"batch":"2010-2012",
+		"depertment":"M.Sc",
+		"email":"hfgasfg@gmail.com",
+		"phoneNumber":"8976765423",
+		"workAt":"TCS",
+		"workLocation":"Chennai",
+		"photo":"uttam.jpg",
+		"interests":["Game","Read","Swimming"],
+		"yearOfExperience":5,
+		"blogPosted":4,
+		"photoUploded":6,
+		"aboutMe":"This is about me",
+		"designation":"System engineer",
+		"background":null,
+		"type":"admin"
+		
+	}
+}

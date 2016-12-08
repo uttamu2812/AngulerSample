@@ -1,0 +1,261 @@
+
+<div class="col-md-12  list-bg">
+
+	<div class="row"><div class="col-md-12  ">
+
+		<tabset>
+			<tab heading="Approv user">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-3  list-filter" ng-init="getUserApproveFilterData()"><br>
+								<i class="fa fa-filter black"></i> Filter by
+								<span class="pointer pull-right"  ng-show="anyValueSelected(userApproveFilterData.filterData)">Apply all
+									<i class="fa fa-dot-circle-o black"></i>
+									<span ng-click="clearAllSelectedValue(userApproveFilterData.filterData)">Clear all</span>
+								</span>
+								<hr class="filter" WIDTH="95%">
+								<div  ng-repeat="attribute in userApproveFilterData.filterData">
+									{{attribute.label}} 
+									<span class="pointer  pull-right"  ng-show="attribute.value!=null && attribute.value.length!=0">Apply
+										<i class="fa fa-dot-circle-o black"></i>
+										<span ng-click="attribute.value=null">Clear</span>
+									</span>
+									<hr class="filter" WIDTH="95%">
+									<filter-data which="attribute"></filter-data>
+									<hr class="filter" WIDTH="95%">
+								</div>
+
+							</div>
+
+							<div class="col-md-9 " ng-init="getUserToBeApproveList()">
+								<!-- sort and search -->
+								<br><span class="pull-right"><input type="search"/> <i class="fa fa-sort-amount-asc"></i></span><br>
+								<hr WIDTH="95%">
+								
+								<!-- Display applied filter start -->
+								<span  ng-repeat="attribute in userApproveFilterData.filterData">
+									<span ng-show="attribute.value!=null && attribute.value.length!=0">{{attribute.label}} :
+										<span class="applied-filter-span" ng-repeat="value in attribute.value">
+											{{value.name}} <span ng-click="removeAppliedValue(attribute,value)" class="pointer">x</span></span>
+										</span>
+									</span>
+									<!-- Display applied filter end -->
+									<div  ng-repeat="user in userToBeApproveList">
+										<div class="user-widget-not-approved float-left">
+											<img ng-show="user.photo!=null" src="/assets/profile_photo/{{user.photo}}"  class="img-circle user-img">
+											<img ng-show="user.photo==null"src="/assets/img/Avatar.jpg"  class="img-circle user-img">
+											<b>{{user.firstName}} {{user.middleName}} {{user.lastName}}</b>
+											<div class="user-info">
+												<i class="fa fa-certificate" title="Depertment"></i> {{user.depertment}} <i class="fa fa-y-combinator" title="Batch"></i>{{user.batch}}<br>
+												<i class="fa fa-envelope" title="Email"></i> {{user.email}} <i class="fa fa-mobile" title="Phone number"></i> {{user.phoneNumber}}<br>
+												<i class="fa fa-briefcase" title="Work at"></i> {{user.workAt}} <i class="fa fa-map-marker" title="work location"></i> {{user.workLocation}}
+											</div>
+											<hr class="filter" WIDTH="95%">
+											<div class="approve-button" ng-click="approveUser(user)">Approve</div>
+											<div class="reject-button" ng-click="rejectUser(user)">Reject</div>
+										</div>
+										<br ng-show="$index%2==1"> 
+
+									</div>
+									<div style="text-align:center">
+										<paging
+										class="small"
+										page="1" 
+										page-size="10" 
+										total="100"
+										adjacent="2"
+										dots="..."
+										scroll-top="false" 
+										hide-if-empty="false"
+										ul-class="pagination"
+										active-class="active"
+										disabled-class="disabled"
+										show-prev-next=true
+										paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+									</paging> 
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</tab>
+			<tab heading="Approve photo">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-3  list-filter" ng-init="getPhotoApproveFilterData()"><br>
+								<i class="fa fa-filter black"></i> Filter by
+								<span class="pointer pull-right"  ng-show="anyValueSelected(photoApproveFilterData.filterData)">Apply all
+									<i class="fa fa-dot-circle-o black"></i>
+									<span ng-click="clearAllSelectedValue(photoApproveFilterData.filterData)">Clear all</span>
+								</span>
+								<hr class="filter" WIDTH="95%">
+								<div  ng-repeat="attribute in photoApproveFilterData.filterData">
+									{{attribute.label}} 
+									<span class="pointer pull-right"  ng-show="attribute.value!=null && attribute.value.length!=0">Apply
+
+										<i class="fa fa-dot-circle-o black"></i>
+										<span ng-click="attribute.value=null">Clear</span>
+									</span>
+									<hr class="filter" WIDTH="95%">
+									<filter-data which="attribute"></filter-data>
+									<hr class="filter" WIDTH="95%">
+								</div>
+
+							</div>
+
+							<div class="col-md-9 ">
+								<!-- sort and search -->
+								<br><span class="pull-right"><input type="search"/> <i class="fa fa-sort-amount-asc"></i></span><br>
+								<hr WIDTH="95%">
+								<!-- Display applied filter start -->
+								<span  ng-repeat="attribute in photoApproveFilterData.filterData">
+									<span ng-show="attribute.value!=null && attribute.value.length!=0">{{attribute.label}} :
+										<span class="applied-filter-span" ng-repeat="value in attribute.value">
+											{{value.name}} <span ng-click="removeAppliedValue(attribute,value)" class="pointer">x</span></span>
+										</span>
+									</span>
+									<!-- Display applied filter end -->
+									<div class="widget-list"></div><br>
+									<div class="widget-list"></div><br>
+									<div class="widget-list"></div><br>
+									<div style="text-align:center">
+										<paging
+										class="small"
+										page="1" 
+										page-size="10" 
+										total="100"
+										adjacent="2"
+										dots="..."
+										scroll-top="false" 
+										hide-if-empty="false"
+										ul-class="pagination"
+										active-class="active"
+										disabled-class="disabled"
+										show-prev-next=true
+										paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+									</paging> 
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</tab>
+			<tab heading="Approve post">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-3  list-filter" ng-init="getBlogApproveFilterData()"><br>
+								<i class="fa fa-filter black"></i> Filter by
+								<span class="pointer pull-right"  ng-show="anyValueSelected(blogApproveFilterData.filterData)">Apply all
+									<i class="fa fa-dot-circle-o black"></i>
+									<span ng-click="clearAllSelectedValue(blogApproveFilterData.filterData)">Clear all</span>
+								</span>
+								<hr class="filter" WIDTH="95%">
+								<div  ng-repeat="attribute in blogApproveFilterData.filterData">
+									{{attribute.label}} 
+									<span class="pointer pull-right"  ng-show="attribute.value!=null && attribute.value.length!=0">Apply
+										<i class="fa fa-dot-circle-o black"></i>
+										<span ng-click="attribute.value=null">Clear</span>
+									</span>
+									<hr class="filter" WIDTH="95%">
+									<filter-data which="attribute"></filter-data>
+									<hr class="filter" WIDTH="95%">
+								</div>
+
+							</div>
+
+							<div class="col-md-9 " ng-init="getPostsTobeApprove()">
+								<!-- sort and search -->
+								<br><span class="pull-right"><input type="search"/> <i class="fa fa-sort-amount-asc"></i></span><br>
+								<hr WIDTH="95%">
+								<!-- Display applied filter start -->
+								<span  ng-repeat="attribute in blogApproveFilterData.filterData">
+									<span ng-show="attribute.value!=null && attribute.value.length!=0">{{attribute.label}} :
+										<span class="applied-filter-span" ng-repeat="value in attribute.value">
+											{{value.name}} <span ng-click="removeAppliedValue(attribute,value)" class="pointer">x</span></span>
+										</span>
+									</span>
+									<!-- Display applied filter end -->
+									<div  ng-repeat="post in posts">
+						<blockquote class="blockquote-blog">
+						<div class="post-item" id="article-3">
+							<div class="caption wrapper-lg">
+									<i class="fa fa-rss-square fa-2x"></i>
+			                   	<b><a href= title="click here to view more details">
+			                    		{{post.title}}
+			                    	</a></b>
+			                   
+     		                         
+			                   <p>
+			                   <div class="post-sum" >
+			                   
+			                	 {{post.body}}
+			                	
+			                    </div>
+			                    <hr class="filter" WIDTH="95%">
+			                    <div class="col-md-4">
+			                    	<div class="approve-button" ng-click="approvePost(post)">Approve</div>
+								<div class="reject-button" ng-click="rejectPost(post)">Reject</div>
+			                    </div>
+			                    
+			                    <cite>
+
+			                 --  <img src="./assets/profile_photo/{{post.postedBy.photo||Avater.jpg}}"   class="img-circle user-img-xs" tooltip-template="'myTooltipTemplate.html'">
+			                    
+			                    {{post.postedBy.firstName}} {{post.postedBy.lastName}} &nbsp
+			                      {{post.postedon}}              
+			                  
+			                </cite>
+			                   
+			                  </div>
+			            </div>	
+			            <br>
+			             </blockquote>
+									</div>
+									
+									
+									<div style="text-align:center">
+										<paging
+										class="small"
+										page="1" 
+										page-size="10" 
+										total="100"
+										adjacent="2"
+										dots="..."
+										scroll-top="false" 
+										hide-if-empty="false"
+										ul-class="pagination"
+										active-class="active"
+										disabled-class="disabled"
+										show-prev-next=true
+										paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+									</paging> 
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</tab>
+		</tabset>
+	</div></div>
+
+</div>
+
+<!-- list page end -->

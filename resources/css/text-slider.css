@@ -1,0 +1,78 @@
+#content-events {
+height: 100%;
+width: 100%;
+overflow: hidden;
+/*margin: 10% auto;*/
+padding: 0px;
+/*background-color: #000;*/
+}
+#slide-events {
+height: 95%;
+width: 95%;
+overflow: hidden;
+margin: 10px;
+padding: 0px;
+background-color: #999;
+}
+#events {
+height: 95%;
+width: 600px;
+margin: 0px;
+padding: 0px;
+background-color: #333;
+-webkit-animation-play-state: running;
+-webkit-animation-name: slideIt;
+-webkit-animation-duration: 15000ms;
+-webkit-transform-origin: 50% 50%;
+-webkit-animation-iteration-count: infinite;
+/*-webkit-animation-timing-function: ease-in-out;*/
+}
+/* Resume the slideshow 
+#slideReel:hover{
+  margin-left:-400px;
+}
+*/
+
+.slide {
+float: left;
+height: 95%;
+width: 95%;
+margin: 0px;
+padding: 0px;
+background-color: #FFF;
+}
+#content-events:hover #events {
+-webkit-animation-play-state: paused;
+}
+ @-webkit-keyframes slideIt {
+ 0% {
+-webkit-transform: translate(0px);
+}
+ 5% {
+-webkit-transform: translate(0px);
+}
+ 20% {
+-webkit-transform: translate(-100px);
+}
+ 40% {
+-webkit-transform: translate(-150px);
+}
+ 60% {
+-webkit-transform: translate(-250px);
+}
+ 80% {
+-webkit-transform: translate(-300px);
+}
+ 100% {
+-webkit-transform: translate(-400px);
+}
+}
+#slide1 {
+background-color:#5cb85c; 
+}
+#slide2 {
+background-color: #099fde;
+}
+#slide3 {
+background-color:#d9534f;
+}

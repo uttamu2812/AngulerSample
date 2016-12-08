@@ -1,0 +1,80 @@
+
+<div class="col-md-12  list-bg">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3  list-filter" ng-init="getRegisteredUserFilterData()"><br>
+					<i class="fa fa-filter black"></i> <b>Filter by</b>
+					<span  class="pointer pull-right" ng-show="anyValueSelected(registeredUserFilterData.filterData)"><span ng-click="applyAllFilter(registeredUserFilterData)">Apply all </span><i class="fa fa-dot-circle-o black"></i>
+					<span ng-click="clearAllSelectedValue(registeredUserFilterData.filterData)">Clear all</span>
+				</span>
+				<hr class="filter" WIDTH="95%">
+				<div  ng-repeat="attribute in registeredUserFilterData.filterData">
+					{{attribute.label}} 
+					<span class="pointer pull-right"  ng-show="attribute.value!=null && attribute.value.length!=0"><span ng-click="applyFilter(attribute)">Apply </span><i class="fa fa-dot-circle-o black"></i>
+					<span ng-click="attribute.value=null">Clear</span>
+				</span>
+				<hr class="filter" WIDTH="95%">
+				<filter-data which="attribute"></filter-data>
+				<hr class="filter" WIDTH="95%">
+			</div>
+			<!-- {{registeredUserFilterData}} -->
+		</div>
+
+		<div class="col-md-9 " ng-init="getApprovedUserList(registeredUserFilterData)" >
+			<!-- sort and search -->
+			<br><span class="pull-right"><input type="search"/> <i class="fa fa-sort-amount-asc"></i></span><br>
+			<hr WIDTH="95%">
+			<!-- Display applied filter start -->
+			<span  ng-repeat="attribute in registeredUserFilterData.filterData">
+				<span ng-show="attribute.value!=null && attribute.value.length!=0">{{attribute.label}} :
+					<span class="applied-filter-span" ng-repeat="value in attribute.value">
+						{{value.name}} <span ng-click="removeAppliedValue(attribute,value)" class="pointer">x</span></span>
+					</span>
+				</span>
+				<!-- Display applied filter end -->
+				<div  ng-repeat="user in approvedUserList">
+					<div class="user-widget-approved float-left">
+						<img ng-show="user.photo!=null" src="/assets/profile_photo/{{user.photo}}"  class="img-circle user-img">
+						<img ng-show="user.photo==null"src="/assets/img/Avatar.jpg"  class="img-circle user-img">
+						<b>{{user.firstName}} {{user.middleName}} {{user.lastName}}</b>
+						<br>
+						<div class="user-info">
+							<i class="fa fa-certificate" title="Depertment"></i> {{user.depertment}} <i class="fa fa-y-combinator" title="Batch"></i>{{user.batch}}<br>
+							<i class="fa fa-envelope" title="Email"></i> {{user.email}} <i class="fa fa-mobile" title="Phone number"></i> {{user.phoneNumber}}<br>
+							<i class="fa fa-briefcase" title="Work at"></i> {{user.workAt}} <i class="fa fa-map-marker" title="work location"></i> {{user.workLocation}}
+						</div>
+
+					</div>
+					<br ng-show="$index%2==1"> 
+
+				</div>
+
+				<div style="text-align:center">
+					<paging
+					class="small"
+					page="1" 
+					page-size="10" 
+					total="100"
+					adjacent="2"
+					dots="..."
+					scroll-top="false" 
+					hide-if-empty="false"
+					ul-class="pagination"
+					active-class="active"
+					disabled-class="disabled"
+					show-prev-next=true
+					paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+				</paging> 
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- list page end -->

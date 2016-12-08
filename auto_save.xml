@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<database name="my_business">
+  <schema>
+    <table name="advanced_payment">
+      <field name="id" type="bigint(20) unsigned" null="no" key="pri" extra="auto_increment"/>
+      <field name="customer_id" type="int(11)" null="no"/>
+      <field name="amount" type="int(11)" null="no"/>
+      <field name="remarks" type="varchar(2000)" null="no"/>
+      <field name="created_at" type="timestamp" null="no" default="current_timestamp"/>
+      <field name="updated_at" type="timestamp" null="no" default="current_timestamp" extra="on update current_timestamp"/>
+      <field name="payment_date" type="date" null="no"/>
+      <field name="paid" type="varchar(100)" null="no" default="notpaid"/>
+    </table>
+    <table name="advanced_payment_history">
+      <field name="id" type="bigint(20) unsigned" null="no" key="pri" extra="auto_increment"/>
+      <field name="customer_id" type="int(11)" null="no"/>
+      <field name="amount_from" type="decimal(10,0)" null="yes"/>
+      <field name="amount_to" type="int(11)" null="no"/>
+      <field name="remarks" type="varchar(2000)" null="no"/>
+      <field name="created_at" type="timestamp" null="no" default="current_timestamp"/>
+      <field name="updated_at" type="timestamp" null="no" default="current_timestamp" extra="on update current_timestamp"/>
+      <field name="status" type="varchar(200)" null="no"/>
+    </table>
+    <table name="daity_entry">
+      <field name="id" type="bigint(20) unsigned" null="no" key="pri" extra="auto_increment"/>
+      <field name="customer_id" type="int(11)" null="no"/>
+      <field name="entry_date" type="date" null="no"/>
+      <field name="quantity" type="decimal(10,3)" null="no"/>
+      <field name="partial_quantity" type="int(11)" null="yes"/>
+      <field name="entry_type" type="varchar(100)" null="no"/>
+      <field name="rate" type="decimal(10,2)" null="no"/>
+      <field name="total" type="decimal(10,2)" null="no"/>
+      <field name="percentage" type="decimal(10,2)" null="no"/>
+      <field name="paid" type="varchar(20)" null="no" default="notpaid"/>
+      <field name="updated_at" type="timestamp" null="no" default="current_timestamp" extra="on update current_timestamp"/>
+      <field name="created_at" type="timestamp" null="no" default="current_timestamp"/>
+    </table>
+    <table name="setting">
+      <field name="id" type="bigint(20) unsigned" null="no" key="pri" extra="auto_increment"/>
+      <field name="percentage" type="decimal(10,2)" null="no"/>
+      <field name="created_at" type="timestamp" null="no" default="current_timestamp"/>
+      <field name="updated_at" type="timestamp" null="no" default="current_timestamp" extra="on update current_timestamp"/>
+    </table>
+    <table name="users">
+      <field name="id" type="bigint(20) unsigned" null="no" key="pri" extra="auto_increment"/>
+      <field name="email" type="varchar(200)" null="yes"/>
+      <field name="name" type="varchar(200)" null="no"/>
+      <field name="password" type="varchar(200)" null="yes"/>
+      <field name="address" type="text" null="yes"/>
+      <field name="type" type="varchar(200)" null="no"/>
+      <field name="updated_at" type="timestamp" null="no" default="current_timestamp" extra="on update current_timestamp"/>
+      <field name="created_at" type="timestamp" null="no" default="0000-00-00 00:00:00"/>
+    </table>
+  </schema>
+  <data>
+    <advanced_payment>
+      <row>
+        <id>10</id>
+        <customer_id>25</customer_id>
+        <amount>3000</amount>
+        <remarks><![CDATA[]]></remarks>
+        <created_at>2016-03-25 09:28:07</created_at>
+        <updated_at>2016-03-25 09:28:07</updated_at>
+        <payment_date>2016-03-25</payment_date>
+        <paid><![CDATA[notpaid]]></paid>
+      </row>
+    </advanced_payment>
+    <advanced_payment_history>
+      <row>
+        <id>3</id>
+        <customer_id>24</customer_id>
+        <amount_from><![CDATA[]]></amount_from>
+        <amount_to>200</amount_to>
+        <remarks><![CDATA[started]]></remarks>
+        <created_at>2016-03-22 18:09:12</created_at>
+        <updated_at>2016-03-22 18:09:12</updated_at>
+        <status><![CDATA[New advanced]]></status>
+      </row>
+      <row>
+        <id>4</id>
+        <customer_id>24</customer_id>
+        <amount_from><![CDATA[200]]></amount_from>
+        <amount_to>150</amount_to>
+        <remarks><![CDATA[started]]></remarks>
+        <created_at>2016-03-22 18:09:28</created_at>
+        <updated_at>2016-03-22 18:09:28</updated_at>
+        <status><![CDATA[Updated]]></status>
+      </row>
+      <row>
+        <id>5</id>
+        <customer_id>24</customer_id>
+        <amount_from><![CDATA[]]></amount_from>
+        <amount_to>150</amount_to>
+        <remarks><![CDATA[Advanced paid]]></remarks>
+        <created_at>2016-03-25 09:25:14</created_at>
+        <updated_at>2016-03-25 09:25:14</updated_at>
+        <status><![CDATA[Paid]]></status>
+      </row>
+      <row>
+        <id>6</id>
+        <customer_id>25</customer_id>
+        <amount_from><![CDATA[]]></amount_from>
+        <amount_to>3000</amount_to>
+        <remarks><![CDATA[]]></remarks>
+        <created_at>2016-03-25 09:28:07</created_at>
+        <updated_at>2016-03-25 09:28:07</updated_at>
+        <status><![CDATA[New advanced]]></status>
+      </row>
+      <row>
+        <id>7</id>
+        <customer_id>24</customer_id>
+        <amount_from><![CDATA[]]></amount_from>
+        <amount_to>10000</amount_to>
+        <remarks><![CDATA[10 thousand]]></remarks>
+        <created_at>2016-03-25 09:33:55</created_at>
+        <updated_at>2016-03-25 09:33:55</updated_at>
+        <status><![CDATA[New advanced]]></status>
+      </row>
+      <row>
+        <id>8</id>
+        <customer_id>24</customer_id>
+        <amount_from><![CDATA[]]></amount_from>
+        <amount_to>10000</amount_to>
+        <remarks><![CDATA[Advanced paid]]></remarks>
+        <created_at>2016-03-26 02:25:07</created_at>
+        <updated_at>2016-03-26 02:25:07</updated_at>
+        <status><![CDATA[Paid]]></status>
+      </row>
+    </advanced_payment_history>
+    <daity_entry>
+      <row>
+        <id>23</id>
+        <customer_id>22</customer_id>
+        <entry_date>2016-03-06</entry_date>
+        <quantity><![CDATA[12.000]]></quantity>
+        <partial_quantity>17</partial_quantity>
+        <entry_type><![CDATA[20]]></entry_type>
+        <rate><![CDATA[65.00]]></rate>
+        <total><![CDATA[835.25]]></total>
+        <percentage><![CDATA[66.82]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:29:34</updated_at>
+        <created_at>2016-03-13 06:46:32</created_at>
+      </row>
+      <row>
+        <id>24</id>
+        <customer_id>22</customer_id>
+        <entry_date>2016-03-08</entry_date>
+        <quantity><![CDATA[200.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[45.00]]></rate>
+        <total><![CDATA[90.00]]></total>
+        <percentage><![CDATA[7.20]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:29:34</updated_at>
+        <created_at>2016-03-13 08:19:16</created_at>
+      </row>
+      <row>
+        <id>25</id>
+        <customer_id>22</customer_id>
+        <entry_date>2016-03-02</entry_date>
+        <quantity><![CDATA[2.700]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Kg]]></entry_type>
+        <rate><![CDATA[45.00]]></rate>
+        <total><![CDATA[121.50]]></total>
+        <percentage><![CDATA[9.79]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:29:34</updated_at>
+        <created_at>2016-03-13 09:59:36</created_at>
+      </row>
+      <row>
+        <id>27</id>
+        <customer_id>22</customer_id>
+        <entry_date>2016-03-03</entry_date>
+        <quantity><![CDATA[678.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[87.05]]></rate>
+        <total><![CDATA[590.20]]></total>
+        <percentage><![CDATA[47.22]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:29:34</updated_at>
+        <created_at>2016-03-13 10:00:26</created_at>
+      </row>
+      <row>
+        <id>31</id>
+        <customer_id>22</customer_id>
+        <entry_date>2016-03-16</entry_date>
+        <quantity><![CDATA[349.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[35.00]]></rate>
+        <total><![CDATA[122.15]]></total>
+        <percentage><![CDATA[9.77]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:29:34</updated_at>
+        <created_at>2016-03-16 16:58:46</created_at>
+      </row>
+      <row>
+        <id>32</id>
+        <customer_id>22</customer_id>
+        <entry_date>2016-03-16</entry_date>
+        <quantity><![CDATA[349.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[66.90]]></rate>
+        <total><![CDATA[233.48]]></total>
+        <percentage><![CDATA[18.82]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:29:34</updated_at>
+        <created_at>2016-03-16 16:59:03</created_at>
+      </row>
+      <row>
+        <id>34</id>
+        <customer_id>26</customer_id>
+        <entry_date>2016-03-17</entry_date>
+        <quantity><![CDATA[45.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[23.00]]></rate>
+        <total><![CDATA[10.35]]></total>
+        <percentage><![CDATA[0.83]]></percentage>
+        <paid><![CDATA[notpaid]]></paid>
+        <updated_at>2016-03-16 19:06:19</updated_at>
+        <created_at>2016-03-16 19:06:19</created_at>
+      </row>
+      <row>
+        <id>35</id>
+        <customer_id>25</customer_id>
+        <entry_date>2016-03-18</entry_date>
+        <quantity><![CDATA[34.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[56.70]]></rate>
+        <total><![CDATA[19.28]]></total>
+        <percentage><![CDATA[1.55]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:03:09</updated_at>
+        <created_at>2016-03-18 17:08:40</created_at>
+      </row>
+      <row>
+        <id>37</id>
+        <customer_id>24</customer_id>
+        <entry_date>2016-03-19</entry_date>
+        <quantity><![CDATA[56.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[55.00]]></rate>
+        <total><![CDATA[30.80]]></total>
+        <percentage><![CDATA[2.48]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-25 14:17:58</updated_at>
+        <created_at>2016-03-19 10:27:08</created_at>
+      </row>
+      <row>
+        <id>38</id>
+        <customer_id>24</customer_id>
+        <entry_date>2016-03-19</entry_date>
+        <quantity><![CDATA[355.000]]></quantity>
+        <partial_quantity>55</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[55.00]]></rate>
+        <total><![CDATA[195.25]]></total>
+        <percentage><![CDATA[15.74]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-25 14:17:58</updated_at>
+        <created_at>2016-03-19 12:19:23</created_at>
+      </row>
+      <row>
+        <id>39</id>
+        <customer_id>24</customer_id>
+        <entry_date>2016-03-19</entry_date>
+        <quantity><![CDATA[6789.000]]></quantity>
+        <partial_quantity>45</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[56.00]]></rate>
+        <total><![CDATA[3801.84]]></total>
+        <percentage><![CDATA[306.43]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-25 14:17:58</updated_at>
+        <created_at>2016-03-19 12:20:11</created_at>
+      </row>
+      <row>
+        <id>41</id>
+        <customer_id>25</customer_id>
+        <entry_date>2016-03-19</entry_date>
+        <quantity><![CDATA[45.500]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Kg]]></entry_type>
+        <rate><![CDATA[67.00]]></rate>
+        <total><![CDATA[3048.50]]></total>
+        <percentage><![CDATA[245.71]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 07:03:09</updated_at>
+        <created_at>2016-03-19 12:53:55</created_at>
+      </row>
+      <row>
+        <id>42</id>
+        <customer_id>24</customer_id>
+        <entry_date>2016-03-19</entry_date>
+        <quantity><![CDATA[5.000]]></quantity>
+        <partial_quantity>6</partial_quantity>
+        <entry_type><![CDATA[20]]></entry_type>
+        <rate><![CDATA[67.00]]></rate>
+        <total><![CDATA[355.10]]></total>
+        <percentage><![CDATA[28.62]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-25 14:17:58</updated_at>
+        <created_at>2016-03-19 14:41:07</created_at>
+      </row>
+      <row>
+        <id>44</id>
+        <customer_id>24</customer_id>
+        <entry_date>2016-03-20</entry_date>
+        <quantity><![CDATA[2.500]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Kg]]></entry_type>
+        <rate><![CDATA[56.00]]></rate>
+        <total><![CDATA[140.00]]></total>
+        <percentage><![CDATA[11.28]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-25 08:33:30</updated_at>
+        <created_at>2016-03-20 09:53:32</created_at>
+      </row>
+      <row>
+        <id>45</id>
+        <customer_id>27</customer_id>
+        <entry_date>2016-03-20</entry_date>
+        <quantity><![CDATA[2000.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[34.00]]></rate>
+        <total><![CDATA[680.00]]></total>
+        <percentage><![CDATA[57.80]]></percentage>
+        <paid><![CDATA[paid]]></paid>
+        <updated_at>2016-03-26 06:56:01</updated_at>
+        <created_at>2016-03-20 13:16:08</created_at>
+      </row>
+      <row>
+        <id>46</id>
+        <customer_id>24</customer_id>
+        <entry_date>2016-03-26</entry_date>
+        <quantity><![CDATA[450.000]]></quantity>
+        <partial_quantity>0</partial_quantity>
+        <entry_type><![CDATA[Rose]]></entry_type>
+        <rate><![CDATA[23.00]]></rate>
+        <total><![CDATA[103.50]]></total>
+        <percentage><![CDATA[8.28]]></percentage>
+        <paid><![CDATA[notpaid]]></paid>
+        <updated_at>2016-03-26 02:01:29</updated_at>
+        <created_at>2016-03-26 02:01:29</created_at>
+      </row>
+    </daity_entry>
+    <setting>
+      <row>
+        <id>1</id>
+        <percentage><![CDATA[8.00]]></percentage>
+        <created_at>2016-03-13 09:40:27</created_at>
+        <updated_at>2016-03-20 13:16:59</updated_at>
+      </row>
+    </setting>
+    <users>
+      <row>
+        <id>1</id>
+        <email><![CDATA[admin@gmail.com]]></email>
+        <name><![CDATA[Admin]]></name>
+        <password><![CDATA[$2y$10$s.mqgbP3EYkJAilu88bPyOwBeM5cktgLpboP0hqrXaMJZxwBjtHuK]]></password>
+        <address><![CDATA[Keshapat]]></address>
+        <type><![CDATA[admin]]></type>
+        <updated_at>2016-03-17 09:30:37</updated_at>
+        <created_at>0000-00-00 00:00:00</created_at>
+      </row>
+      <row>
+        <id>16</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[customer1]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-10 20:59:58</updated_at>
+        <created_at>2016-03-10 20:11:06</created_at>
+      </row>
+      <row>
+        <id>17</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[customer-2 update]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-10 20:53:20</updated_at>
+        <created_at>2016-03-10 20:11:17</created_at>
+      </row>
+      <row>
+        <id>20</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[Customer-3]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-10 21:03:55</updated_at>
+        <created_at>2016-03-10 21:03:55</created_at>
+      </row>
+      <row>
+        <id>21</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[Customer-4]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-10 21:04:03</updated_at>
+        <created_at>2016-03-10 21:04:03</created_at>
+      </row>
+      <row>
+        <id>22</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[Customer-5]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-10 21:04:11</updated_at>
+        <created_at>2016-03-10 21:04:11</created_at>
+      </row>
+      <row>
+        <id>24</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[Uttam Ghorai]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-14 17:51:02</updated_at>
+        <created_at>2016-03-14 17:51:02</created_at>
+      </row>
+      <row>
+        <id>25</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[Gobinda Ghorai]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-14 17:51:14</updated_at>
+        <created_at>2016-03-14 17:51:14</created_at>
+      </row>
+      <row>
+        <id>27</id>
+        <email><![CDATA[]]></email>
+        <name><![CDATA[Shamal samanta]]></name>
+        <password><![CDATA[]]></password>
+        <address><![CDATA[]]></address>
+        <type><![CDATA[customer]]></type>
+        <updated_at>2016-03-20 13:26:03</updated_at>
+        <created_at>2016-03-20 13:14:19</created_at>
+      </row>
+    </users>
+  </data>
+</database>

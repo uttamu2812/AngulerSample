@@ -1,0 +1,226 @@
+<div class="col-md-12" ng-init="getUserDetails()">
+	<div class="row" >
+		<div class="col-md-12 profile-summary " style="background-image: url(./assets/img/{{user.background||'back-ground.jpg'}});">
+
+			<div class="row">
+				<div class="col-md-2 white-bg">
+					<img ng-show="user.photo==null" src="/assets/img/Avatar.jpg"  class="img-circle user-profile-img">
+					<img ng-show="user.photo!=null" src="/assets/profile_photo/{{user.photo}}"  class="img-circle user-profile-img">
+				</div>
+				<div class="col-md-5 profile-info-1">
+
+					<span class="pull-right"><i class="fa fa-pencil-square-o hover-increase pointer" title="Edit"></i></span>
+
+					<h3>{{user.firstName}} {{user.middleName}} {{user.lastName}}</h3>
+					<b>{{user.designation}}</b>
+					<div class="profile-info">
+						<i class="fa fa-certificate black" title="Depertment"></i> {{user.depertment}} <i class="fa fa-y-combinator black" title="Batch"></i>{{user.batch}}<br>
+						<i class="fa fa-envelope black" title="Email"></i> {{user.email}}  <i class="fa fa-mobile black" title="Phone number"></i>  {{user.phoneNumber}}<br>
+						<i class="fa fa-briefcase black" title="Work at"></i> {{user.workAt}} <i class="fa fa-map-marker black" title="work location black"></i>  {{user.workLocation}}
+					</div>
+
+				</div>
+				<div class="col-md-5 ">
+					<div class="row profile-info-2">
+						<span class="pull-center white"><span class="profile-count-info-1"> {{user.yearOfExperience}}</span> year work experience</span>
+					</div>
+					<div class="row ">
+						<div class="col-md-12 ">
+							<div class="row">
+								<div class="col-md-6 profile-info-3">
+									<span><span class="profile-count-info-2"> {{user.blogPosted}}</span> Blog posted</span>
+								</div>
+								<div class="col-md-6 profile-info-4">
+									<span ><span class="profile-count-info-2"> {{user.photoUploded}}</span> Photo uploded</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 profile-body">
+			<br>
+			<div>
+				<div>
+					<span class="pull-right"><i title="Edit" class="fa fa-pencil-square-o hover-increase pointer"></i></span>
+					<h3>This is what I am</h3>
+					
+					<div><p class="abt-me">{{user.aboutMe}}</p></div>
+					<div ng-show="user.aboutMe==null">I</div>
+				</div>
+
+				<hr WIDTH="90%">
+				<div>
+					<span class="pull-right" ng-click="showEditInterest=!showEditInterest"><i title="Edit" class="fa fa-pencil-square-o hover-increase pointer"></i></span>
+					<h3>My interests</h3>
+					<div >
+						
+
+						<span class="interest" ng-repeat="interest in user.interests"> {{interest}} 
+						<span ng-show="showEditInterest" class="pointer" ng-click="removeInterest(interest)">x</span>
+						</span>
+						
+					</div>
+					<div ng-show="showEditInterest" class="cssSlideUp-interest">
+					
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" ng-model="newInterest" class="form-control" placeholder="Add new interest"></input>
+							</div>
+							<div>
+								<input ng-show="newInterest.length>4" type="button" class="btn btn-primary" value="Add" ng-click="addNewInterest(newInterest)"></button>
+							</div>
+						</div>
+
+						<br>
+									
+										<button type="submit" class="btn btn-primary" ng-click="saveInterest()">Submit</button>
+									
+									
+										<button type="submit" class="btn btn-danger" ng-click="cancelInterestEdit()">Cancel</button>
+									
+									
+								
+
+					</div>
+					
+				</div>
+
+				<hr WIDTH="90%">
+				<div class="col-md-12">
+					<div >
+						<div>
+							<span class="pull-right" ng-click="showAddNew=!showAddNew"><i title="Add new" class="fa fa-plus-circle hover-increase pointer green"></i></span>
+						</div>
+						<div><h3>My Time line </h3></div>
+						
+						
+
+					</div>
+					<!-- add new timeline start -->
+					<div ng-show="showAddNew" class=" cssSlideUp-new-timeline row" >
+					
+						<div class="col-md-6">
+							<form class="well" name="newForm" ng-submit="addEvent()" novalidate>
+								<div class="form-group" ng-class="{ 'has-error' : newForm.title.$invalid && !newForm.title.$pristine }">
+
+									<input placeholder="Time line tite" type="text" name="title" class="form-control input-sm" ng-model="newTimeline.title" required>
+									<p ng-show="newForm.title.$invalid && !newForm.title.$pristine" class="help-block">Time line title is required.</p>
+								</div>
+								<div class="form-group" >
+
+									<input placeholder="Time line description" type="text" name="description" class="form-control input-sm" ng-model="newTimeline.description" >
+
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : newForm.type.$invalid && !newForm.type.$pristine }">
+									<label>Select type</label>
+									<!-- <label class="radio-inline" ng-repeat="o in types"><input  type="radio"  ng-model="newForm.type"/>{{o}}</label> -->
+									<input type="radio" name="type" value="Education" ng-model="newTimeline.type" required>  Education</input>
+									<input type="radio" name="type" value="Work" ng-model="newTimeline.type" required> Work</input>
+									<p ng-show="newForm.type.$invalid && !newForm.type.$pristine" class="help-block"> Time line type is required.</p>
+								</div>
+								<div class="row">
+									
+										<button type="submit" class="btn btn-primary" ng-disabled="newForm.$invalid">Submit</button>
+									
+									
+										<button type="submit" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+									
+									
+								</div>
+								
+							</form>
+							{{newTimeline}}
+						</div>
+						<hr WIDTH="90%">
+					</div>
+					<!-- add new end -->
+					<!-- time line start -->
+					<timeline ng-init="getTimeLine()">
+						<timeline-event ng-repeat="event in events">
+
+						<!-- uses angular-scroll-animate to give it some pop -->
+						<timeline-badge class="{{event.badgeClass}} hidden"
+						when-visible="animateElementIn" when-not-visible="animateElementOut">
+						<i class="glyphicon {{event.badgeIconClass}}"></i>
+					</timeline-badge>
+					<timeline-badge class="{{event.badgeClass}} hidden"
+					when-visible="animateElementIn" when-not-visible="animateElementOut">
+					<i class="glyphicon {{event.badgeIconClass}}"></i>
+				</timeline-badge>
+				<!-- uses angular-scroll-animate to give it some pop -->
+				<timeline-panel class="{{event.badgeClass}} hidden"
+				when-visible="animateElementIn" when-not-visible="animateElementOut">
+				
+				
+				
+				<timeline-heading>
+				<div ng-show="event.editDisable">
+				<div class="right-align">
+					<i class="fa fa-pencil pointer" title="Edit" ng-click="event.editDisable=!event.editDisable"></i>|<i class="fa fa-trash-o pointer" title="Delete" ng-click="deleteEvent(event)"></i>
+				</div>
+				<h4>{{event.title}}</h4>
+				<div>
+					{{event.description}}
+				</div>
+				<p >
+					<small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{event.when||'Not available'}}</small>
+				</p>
+				<p ng-if="event.titleContentHtml" ng-bind-html="event.titleContentHtml">
+				</p>
+				</div>
+				<!-- edit start -->
+				<div class="col-md-11" ng-hide="event.editDisable">
+							<form class="well" name="updateForm" ng-submit="updateEvent(event)" novalidate>
+								<div class="form-group" ng-class="{ 'has-error' : updateForm.title.$invalid && !updateForm.title.$pristine }">
+
+									<input placeholder="Time line tite" type="text" name="title" class="form-control input-sm" ng-model="event.title" required>
+									<p ng-show="updateForm.title.$invalid && !updateForm.title.$pristine" class="help-block">Time line title is required.</p>
+								</div>
+								<div class="form-group" >
+
+									<input placeholder="Time line description" type="text" name="description" class="form-control input-sm" ng-model="event.description" >
+
+								</div>
+								<div class="form-group" ng-class="{ 'has-error' : updateForm.type.$invalid && !updateForm.type.$pristine }">
+									<label>Select type</label>
+									
+									<input type="radio" name="type" value="Education" ng-model="event.type" required>  Education</input>
+									<input type="radio" name="type" value="Work" ng-model="event.type" required> Work</input>
+									<p ng-show="updateForm.type.$invalid && !updateForm.type.$pristine" class="help-block"> Time line type is required.</p>
+								</div>
+								<div class="row">
+									
+										<button type="submit" class="btn btn-primary" ng-disabled="updateForm.$invalid">Submit</button>
+									
+									
+										<button type="submit" class="btn btn-danger" ng-click="event.editDisable=!event.editDisable">Cancel</button>
+									
+									
+								</div>
+								
+							</form>
+						
+						</div>
+				<!-- edit end -->
+			</timeline-heading>
+			<p ng-bind-html="event.contentHtml"></p>
+			<timeline-footer ng-if="event.footerContentHtml">
+			<span ng-bind-html="event.footerContentHtml"></span>
+		</timeline-footer>
+	</timeline-panel>
+</timeline-event>
+</timeline>
+<br>
+<!-- time line end -->
+</div>
+
+</div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,100 @@
+
+<div class="col-md-12  list-bg">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3  list-filter" ng-init="getBlogApproveFilterData()"><br>
+					<i class="fa fa-filter black"></i> <b>Filter by</b>
+					<span  class="pointer pull-right" ng-show="anyValueSelected(blogApproveFilterData.filterData)"><span ng-click="applyAllFilter(blogApproveFilterData)">Apply all </span><i class="fa fa-dot-circle-o black"></i>
+					<span ng-click="clearAllSelectedValue(blogApproveFilterData.filterData)">Clear all</span>
+				</span>
+				<hr class="filter" WIDTH="95%">
+				<div  ng-repeat="attribute in blogApproveFilterData.filterData">
+					{{attribute.label}} 
+					<span class="pointer pull-right"  ng-show="attribute.value!=null && attribute.value.length!=0"><span ng-click="applyFilter(attribute)">Apply </span><i class="fa fa-dot-circle-o black"></i>
+					<span ng-click="attribute.value=null">Clear</span>
+				</span>
+				<hr class="filter" WIDTH="95%">
+				<filter-data which="attribute"></filter-data>
+				<hr class="filter" WIDTH="95%">
+			</div>
+			<!-- {{registeredUserFilterData}} -->
+		</div>
+
+				<div class="col-md-9 " ng-init="getApprovedPosts()">
+								<!-- sort and search -->
+								<br><span class="pull-right"><input type="search"/> <i class="fa fa-sort-amount-asc"></i></span><br>
+								<hr WIDTH="95%">
+								<!-- Display applied filter start -->
+								<span  ng-repeat="attribute in blogApproveFilterData.filterData">
+									<span ng-show="attribute.value!=null && attribute.value.length!=0">{{attribute.label}} :
+										<span class="applied-filter-span" ng-repeat="value in attribute.value">
+											{{value.name}} <span ng-click="removeAppliedValue(attribute,value)" class="pointer">x</span></span>
+										</span>
+									</span>
+									<!-- Display applied filter end -->
+									<div  ng-repeat="post in posts">
+									
+									
+						<blockquote class="blockquote-blog" >
+						<div class="post-item" id="article-3">
+							<div class="caption wrapper-lg">
+							<i class="fa fa-rss-square fa-2x"></i>
+			                   	<b><span class="pointer" > 
+			                    		{{post.title}} 
+			                    	</span></b>
+			                   --<span class="badge">{{post.commentCount}}</span> Comments
+     		                         
+			                   <p>
+			                   <div class="post-sum" >
+			                   
+			                	 {{post.body}}
+			                	
+			                    </div>
+			                   
+			                    
+			                    <cite>
+
+			                 --  <img src="./assets/profile_photo/{{post.postedBy.photo||Avater.jpg}}"   class="img-circle user-img-xs" tooltip-template="'myTooltipTemplate.html'">
+			                    
+			                    {{post.postedBy.firstName}} {{post.postedBy.lastName}} &nbsp
+			                      {{post.postedon}}              
+			                  
+			                </cite>
+			                   
+			                  </div>
+			            </div>	
+			            <br>
+			             </blockquote>
+			             
+									</div>
+									
+				
+									<div style="text-align:center">
+										<paging
+										class="small"
+										page="1" 
+										page-size="10" 
+										total="100"
+										adjacent="2"
+										dots="..."
+										scroll-top="false" 
+										hide-if-empty="false"
+										ul-class="pagination"
+										active-class="active"
+										disabled-class="disabled"
+										show-prev-next=true
+										paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+									</paging> 
+								</div>
+
+							</div>
+	</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- list page end -->

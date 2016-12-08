@@ -1,0 +1,75 @@
+
+<div >
+	<blockquote class="header">
+  <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+          <img class="logo" src="./assets/icon/logo.png">
+        </div>
+        
+          <div ng-show="$root.logged">
+          <div class="col-md-4"></div>
+          <div class="col-md-2">
+            <div class="row">
+          <div >
+            <img ng-show="$root.user.photo!=null" src="/assets/profile_photo/{{$root.user.photo}}"  class="img-circle user-img-xs">
+            <img ng-show="$root.user.photo==null"src="/assets/img/Avatar.jpg"  class="img-circle user-img-xs">
+            {{$root.user.firstName}} {{$root.user.middleName}} {{$root.user.lastName}}
+          
+             
+            <!-- actions -->
+            
+            <span dropdown on-toggle="toggled(open)">
+      <a href id="simple-dropdown" dropdown-toggle>
+        <i class="fa fa-chevron-circle-down white"></i>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+      <li >
+          <a href="#/">Home</a>
+        </li>
+        <li >
+          <a href="#/profile">Profile</a>
+        </li>
+        
+        <li >
+          <a href ng-click="exit()">Logout</a>
+        </li>
+      </ul>
+    </span>
+            
+      </div>
+            <!-- end -->
+          </div>
+            
+          </div>
+          </div>
+          
+         
+          <div ng-hide="$root.logged">
+           <div class="col-md-6 ">
+            <div class="row buttom-align-login">
+            <form  name="login" ng-submit="entry()" novalidate>
+              <div class="col-md-5" ng-class="{ 'has-error' : login.userId.$invalid && !login.userId.$pristine }">
+                <input placeholder="User id" type="text" name="userId" class="form-control input-sm" ng-model="user.id" required>
+                <p ng-show="login.userId.$invalid && !login.userId.$pristine" class="help-block">User id required.</p>
+              </div>
+              <div class="col-md-5" ng-class="{ 'has-error' : login.password.$invalid && !login.password.$pristine }">
+                  <input placeholder="Password" type="password" name="password" class="form-control input-sm" ng-model="user.password" required>
+                  <p ng-show="login.password.$invalid && !login.password.$pristine" class="help-block">Password required.</p>
+              </div>
+              <div>
+                <input type="submit" class="btn btn-primary" class="form-control input-sm"  ng-disabled="login.$invalid" value="Login"></button>
+              </div>
+              </form>
+            </div>
+          </div>
+           
+          </div>
+    </div>
+  </div>
+    
+  </blockquote>
+
+
+</div>
+

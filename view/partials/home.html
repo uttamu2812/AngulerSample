@@ -1,0 +1,223 @@
+<div class="container-fluid">
+	
+	<div class="col-md-12 default-bg">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="row" ng-show="$root.logged && $root.user.type=='admin'">
+					<br>
+					<div class="col-md-12 ">
+						<div class="widget">
+							<div><!-- work list start -->
+								<div class="todo-heading">
+									<i class="fa fa-list-alt fa-3x "></i>
+									<h2>Work list</h2>
+								</div>
+								<div>
+									<tabset>
+										<tab heading="Approv user">
+											<div style="padding-top:4px;padding-left:5px;"><!-- list of users start-->
+							<div class="pointer">
+
+								<img src="/assets/img/Avatar.jpg"  class="img-circle user-img-small">
+								<b>User 1 name</b>
+								<br>
+								<div class="user-info">
+									<i class="fa fa-certificate" title="Depertment"></i> M.sc, <i class="fa fa-y-combinator" title="Batch"></i>2012-14
+								</div>
+
+							</div>
+							 
+			                    	<div class="approve-button" ng-click="approveUser(post)">Approve</div>
+								<div class="reject-button" ng-click="rejectUser(post)">Reject</div>
+			                    
+							<hr WIDTH="90%">
+							<div class="pointer">
+
+								<img src="/assets/img/Avatar.jpg"  class="img-circle user-img-small">
+								<b>User 2 name</b>
+								<br>
+								<div class="user-info">
+									<i class="fa fa-certificate" title="Depertment"></i> M.sc, <i class="fa fa-y-combinator" title="Batch"></i>2012-14
+								</div>
+
+							</div>
+							 
+			                    	<div class="approve-button" ng-click="approveUser(post)">Approve</div>
+								<div class="reject-button" ng-click="rejectUser(post)">Reject</div>
+			                    
+								<hr WIDTH="90%">
+							<div class="center-align">
+								<a href="#/action_list" >View all</a>
+							</div>
+						</div><!-- list of users end-->
+
+
+										</tab>
+										<tab heading="Approv post"></tab>
+										
+									</tabset>
+								</div>
+							</div><!-- end -->
+						</div>
+
+					</div>
+				</div>
+				<br>
+				<div class="row"><div class="col-md-12 ">
+					<div class="widget">
+						<div class="recent-user-widget-heading">
+							<i class="fa fa-group fa-3x "></i>
+							<h2>Recently registered users</h2>
+						</div>
+
+						<div style="padding-top:4px;padding-left:5px;"><!-- list of users start-->
+							<div class="pointer">
+
+								<img src="/assets/img/Avatar.jpg"  class="img-circle user-img-small">
+								<b>User 1 name</b>
+								<br>
+								<div class="user-info">
+									<i class="fa fa-certificate" title="Depertment"></i> M.sc, <i class="fa fa-y-combinator" title="Batch"></i>2012-14
+								</div>
+
+							</div>
+							<hr WIDTH="90%">
+							<div class="pointer">
+
+								<img src="/assets/img/Avatar.jpg"  class="img-circle user-img-small">
+								<b>User 2 name</b>
+								<br>
+								<div class="user-info">
+									<i class="fa fa-certificate" title="Depertment"></i> M.sc, <i class="fa fa-y-combinator" title="Batch"></i>2012-14
+								</div>
+
+							</div>
+							<hr WIDTH="90%">
+							<div class="pointer">
+
+								<img src="/assets/img/Avatar.jpg"  class="img-circle user-img-small">
+								<b>User 3 name</b>
+								<br>
+								<div class="user-info">
+									<i class="fa fa-certificate" title="Depertment"></i> M.C.A, <i class="fa fa-y-combinator" title="Batch"></i>2012-14
+								</div>
+
+							</div>
+							<hr WIDTH="90%">
+							<div class="center-align">
+								<a href="#/registered_users" >View all</a>
+							</div>
+						</div><!-- list of users end-->
+
+					</div>
+
+				</div>
+			</div>
+			<br>
+			<div class="row"><div class="col-md-12 ">
+				<div class="widget">
+					<div class="recent-approved-heading">
+						<i class="fa fa-check-circle fa-3x green"></i>
+						<h2>Recently approved items</h2>
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+		<br>
+	</div>
+	<div class="col-md-6 ">
+		<br>
+		<!-- post,upload start -->
+		<div class="widget-post-upload" ng-show="$root.logged">
+			<tabset>
+				<tab heading="Post blog">
+					<div class="post-blog-form">
+						<div>
+							<textarea rows="5" class="form-control" ng-model="postBlog"></textarea >
+								<div class="pull-right margin">
+									<input  ng-show="postBlog.length>10" type="button" class="btn btn-primary" value="Post" ></button>
+								</div>
+							</div>
+
+
+
+						</div>
+
+					</tab>
+					<tab heading="Upload photo">
+
+					</tab>
+				</tabset>
+			</div>
+
+			<hr WIDTH="90%">
+			<!-- end -->
+			<div class="widget-activity">Heading<hr WIDTH="90%"></div><br>
+			<div class="widget-activity">Heading<hr WIDTH="90%"></div><br>
+			<div class="widget-activity">Heading<hr WIDTH="90%"></div><br>
+			<div class="widget-activity">Heading<hr WIDTH="90%"></div><br>
+		</div>
+		<div class="col-md-3">
+			<div class="row"><br>
+				<div class="col-md-12 ">
+					<div class="widget-news">
+						<div class="news-heading">
+
+							<h2>News</h2>
+
+						</div>
+
+						<div ng-controller="NewsController" >
+								<!-- <div ng-init="getNewsSliderData()" id="slides_control">
+									<carousel interval="myInterval">
+										<slide ng-repeat="news in newsList" active="slide.active">
+											<h3>{{news.description}}</h3><br>
+											<br><br><br>
+											<div class="news-slider-caption" class="carousel-caption">
+												<h4>{{news.title}}</h4>
+											</div> 
+										</slide>
+									</carousel>
+								</div> -->
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<br>
+				<div class="row"><div class="col-md-12 ">
+					<div class="widget-event">
+						<div class="event-heading">
+
+							<h2>Events</h2>
+
+						</div>
+						<!-- event slider start-->
+						hdghjghjfghasgf
+ 
+           
+						<!-- event slider end -->
+						<hr WIDTH="90%">
+						<div class="center-align">
+								<a href="#/events" >View all</a>
+							</div>
+					</div>
+				</div></div><br>
+				<div class="row"><div class="col-md-12 ">
+					<div class="panel panel-default widget-pannel">
+						<div class="panel-heading">Panel heading without title</div>
+						<div class="panel-body">
+							Panel content
+						</div>
+					</div>
+				</div></div>
+
+			</div>
+		</div> 
+	</div><!-- Home end -->
+
+</div><!-- end  -->

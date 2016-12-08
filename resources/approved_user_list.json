@@ -1,0 +1,82 @@
+{"userList":[
+
+{
+	"id":1,
+	"firstName":"Uttam ",
+	"middleName":null,
+	"lastName":"Ghorai",
+	"batch":"2010-2012",
+	"depertment":"M.Sc",
+	"email":"hfgasfg@gmail.com",
+	"phoneNumber":"8976765423",
+	"workAt":"TCS",
+	"workLocation":"Chennai",
+	"photo":null
+	},
+	{
+		"id":2,
+		"firstName":"Banashri ",
+		"middleName":null,
+		"lastName":"Chakraborty",
+		"batch":"2010-2012",
+		"depertment":"M.Sc",
+		"email":"hfgasfg@gmail.com",
+		"phoneNumber":"8976765423",
+		"workAt":"TCS",
+		"workLocation":"Chennai",
+		"photo":"banashri.jpg"
+		},
+		{
+			"id":3,
+			"firstName":"Example ",
+			"middleName":"Kumar",
+			"lastName":"Datta",
+			"batch":"2010-2012",
+			"depertment":"M.Sc",
+			"email":"hfgasfg@gmail.com",
+			"phoneNumber":"8976765423",
+			"workAt":"TCS",
+			"workLocation":"Chennai",
+			"photo":null
+			},
+			{
+				"id":1,
+				"firstName":"Uttam ",
+				"middleName":null,
+				"lastName":"Ghorai",
+				"batch":"2010-2012",
+				"depertment":"M.Sc",
+				"email":"hfgasfg@gmail.com",
+				"phoneNumber":"8976765423",
+				"workAt":"TCS",
+				"workLocation":"Chennai",
+				"photo":null
+				},
+				{
+					"id":2,
+					"firstName":"Banashri ",
+					"middleName":null,
+					"lastName":"Chakraborty",
+					"batch":"2010-2012",
+					"depertment":"M.Sc",
+					"email":"hfgasfg@gmail.com",
+					"phoneNumber":"8976765423",
+					"workAt":"TCS",
+					"workLocation":"Chennai",
+					"photo":"banashri.jpg"
+					},
+					{
+						"id":3,
+						"firstName":"Example ",
+						"middleName":"Kumar",
+						"lastName":"Datta",
+						"batch":"2010-2012",
+						"depertment":"M.Sc",
+						"email":"hfgasfg@gmail.com",
+						"phoneNumber":"8976765423",
+						"workAt":"TCS",
+						"workLocation":"Chennai",
+						"photo":null
+					}
+					]
+				}
